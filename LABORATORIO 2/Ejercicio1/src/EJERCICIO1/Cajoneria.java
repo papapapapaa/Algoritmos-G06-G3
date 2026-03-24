@@ -69,20 +69,12 @@ public class Cajoneria<T> implements Iterable<Caja<T>> {
     // reporte con formato de tabla: Posicion | Color Caja | Objeto
     @Override
     public String toString() {
-        StringBuilder reporte = new StringBuilder();
-
-        // encabezado con columnas alineadas
-        reporte.append(String.format("%-10s | %-15s | %s\n", "Posicion", "Color Caja", "Objeto"));
-        reporte.append("--------------------------------------------------\n");
-
-        // fila por cada caja en la lista
+        String reporte = "Posicion | Color Caja | Objeto\n";
+        reporte += "------------------------------------\n";
         for (int i = 0; i < lista.size(); i++) {
             Caja<T> caja = lista.get(i);
-            // toString() del objeto usa el que definimos en Golosina/Chocolatina
-            reporte.append(String.format("%-10d | %-15s | %s\n",
-                    (i + 1), caja.getColor(), caja.getObjeto().toString()));
+            reporte += (i + 1) + "        | " + caja.getColor() + "       | " + caja.getObjeto().toString() + "\n";
         }
-
-        return reporte.toString();
+        return reporte;
     }
 }
